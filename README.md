@@ -13,4 +13,4 @@ http://pan.baidu.com/s/1kUpZ7AB
 
 截图
 ----
-![](https://github.com/616764899/Level1/raw/master/1.jpg)  
+![](https://github.com/616764899/Level1/raw/master/screenshots/1M.jpg)  
