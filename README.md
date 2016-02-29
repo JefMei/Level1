@@ -7,7 +7,8 @@ APP不会保存加密密钥，而是将启动时您输入的解锁密码作为�
 
 
 下载地址
-http://pan.baidu.com/s/1kUpZ7AB
 ----
+http://pan.baidu.com/s/1kUpZ7AB
+
 
 截图
