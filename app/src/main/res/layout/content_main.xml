@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#0da42b"/>
+
+    <ImageButton
+        android:id="@+id/iv1"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:src="@drawable/sanhengxian_min"
+        android:background="#0da42b"
+        android:layout_marginTop="28dp"
+        android:layout_marginLeft="6dp"
+        android:scaleType="fitCenter"/>
+    <TextView
+        android:text="密钥盒子"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="19dp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="29dp"
+        android:layout_marginLeft="70dp"/>
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/sousuo_min"
+        android:background="#0da42b"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="275dp"/>
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/gexing_min"
+        android:background="#0da42b"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="330dp"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_add_min"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv1"
+        >
+    </ListView>
+
+</RelativeLayout>
