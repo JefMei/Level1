@@ -13,4 +13,4 @@ http://pan.baidu.com/s/1kUpZ7AB
 
 截图
 ----
-![](C:\Users\梅梅\Desktop\常用文件\界面截图)  
+![](https://github.com/616764899/Level1/raw/master/screenshots/)  
