@@ -1,7 +1,6 @@
 package com.example.level1;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -92,10 +91,10 @@ public class Changeinfo extends Activity {
 
                 editor.commit();
 
-                Intent intent = new Intent();
-                intent.putExtra("InfoItem1",infoItem);
+//                Intent intent = new Intent();
+//                intent.putExtra("InfoItem1",infoItem);
 
-                setResult(RESULT_OK,intent);
+                setResult(RESULT_OK,getIntent().putExtra("InfoItem1",infoItem));
                 finish();
             }
         });

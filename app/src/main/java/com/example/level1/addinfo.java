@@ -1,7 +1,6 @@
 package com.example.level1;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -103,9 +102,8 @@ public class addinfo extends Activity{
 //                System.out.println(pref.getString(Name+"Note",""));
 //                System.out.println(pref.getLong(Name+"Time",0));
 
-                Intent intent = new Intent(addinfo.this,MainActivity.class);
-
-                startActivity(intent);
+                setResult(RESULT_CANCELED);
+                finish();
             }
         });
 
@@ -117,8 +115,8 @@ public class addinfo extends Activity{
         return1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(addinfo.this,MainActivity.class);
-                startActivity(intent);
+                setResult(RESULT_CANCELED);
+                finish();
             }
         });
     }

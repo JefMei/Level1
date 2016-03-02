@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,addinfo.class);
-                startActivity(intent);
+                startActivityForResult(intent,0);
             }
         });
 
@@ -73,12 +73,38 @@ public class MainActivity extends Activity {
                 Intent intent = new Intent(MainActivity.this,info.class);
                 intent.putExtra("InfoItem",infodata.get(position));
                 intent.putExtra("position",position);
-                startActivity(intent);
+                startActivityForResult(intent,0);
             }
         });
-
-
     }
 
+    protected void onActivityResult(int requestCode,int resultCode,Intent data1){
+        super.onActivityResult(requestCode,resultCode,data1);
+
+        if(resultCode == RESULT_OK){
+
+        }
+        else if(resultCode == RESULT_CANCELED){
+            SharedPreferences pref = getSharedPreferences("info",MODE_APPEND);
+
+            Gson gson = new Gson();
+            String json = pref.getString("infodata",null);
+            String json1 = pref.getString("data",null);
+
+            infodata = gson.fromJson(json,new TypeToken<ArrayList<InfoItem>>(){}.getType());
+            data = gson.fromJson(json1,new TypeToken<ArrayList<Item>>(){}.getType());
+
+
+            //1、创建适配器
+            adapter = new Adapter(this,R.layout.list_item,data);
+
+            //2、加载数据源    数据已经加载好了
+
+
+            //3、视图加载适配器
+            mlistview = (ListView)findViewById(R.id.listview);
+            mlistview.setAdapter(adapter);
+        }
+    }
 
 }

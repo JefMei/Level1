@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,9 +41,9 @@ public class info extends Activity {
 
 
         final InfoItem infoItem = (InfoItem) getIntent().getSerializableExtra("InfoItem");
-       // final InfoItem infoItem1 = (InfoItem) getIntent().getSerializableExtra("InfoItem1");///sfjl
         final int position = (int) getIntent().getSerializableExtra("position");
-        final InfoItem infoItem1 = (InfoItem) getIntent().getSerializableExtra("InfoItem1");
+
+
 
 
             bigname.setText(infoItem.getName());
@@ -56,8 +57,8 @@ public class info extends Activity {
         rt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(info.this,MainActivity.class);
-                startActivity(intent);
+                setResult(RESULT_CANCELED);
+                finish();
             }
         });
 
@@ -99,8 +100,8 @@ public class info extends Activity {
                 editor.commit();
 
                 //返回主界面
-                Intent intent = new Intent(info.this,MainActivity.class);
-                startActivity(intent);
+                setResult(RESULT_CANCELED);
+                finish();
             }
         });
     }
@@ -115,15 +116,17 @@ public class info extends Activity {
             TextView time = (TextView) findViewById(R.id.time);
             TextView note = (TextView) findViewById(R.id.note);
 
-            final InfoItem infoItem1 = (InfoItem) getIntent().getSerializableExtra("InfoItem1");
+            final InfoItem infoItem1 = (InfoItem) data.getSerializableExtra("InfoItem1");
 
             if(infoItem1 != null){
+
                 bigname.setText(infoItem1.getName());
                 name.setText(infoItem1.getAccount());
                 pass.setText(infoItem1.getPass());
                 time.setText(infoItem1.getTime());
                 note.setText(infoItem1.getNote());
             }
+            
         }
         else {
             Toast.makeText(this,"未作任何修改",Toast.LENGTH_SHORT).show();
