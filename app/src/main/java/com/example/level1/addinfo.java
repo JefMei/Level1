@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -47,63 +48,72 @@ public class addinfo extends Activity{
                 String Pass = pass.getText().toString().trim();
                 String Note = note.getText().toString().trim();
                 Calendar c = Calendar.getInstance();//获取日历对象
-                int Year = c.get(Calendar.YEAR);
-                int Month = c.get(Calendar.MONTH)+1;
-                int Day = c.get(Calendar.DAY_OF_MONTH);
-                int Hour = c.get(Calendar.HOUR_OF_DAY);
-                int Minute = c.get(Calendar.MINUTE);
-
-                String Time = Year+"年"+Month+"月"+Day+"日"+"  "+Hour+":"+Minute;
-
-                if(Note.equals("")){
-                    Note = "无";
-                }
-
-
-                //将infodata 从sp中取出并判断是否为空
-                Gson gson = new Gson();
-
-                String json = pref.getString("infodata",null);
-                String json1 = pref.getString("data",null);
-
-                List<Item> data ;
-                List<InfoItem> infodata;
-                if(json == null)
+                if(Name.equals(""))
                 {
-                    infodata = new ArrayList<>();
-                    data = new ArrayList<>();
+                    Toast.makeText(addinfo.this,"名称不能为空",Toast.LENGTH_SHORT).show();
                 }
-                else
+                else if(Account.equals(""))
                 {
-                    infodata = gson.fromJson(json,
-                            new TypeToken<ArrayList<InfoItem>>(){}.getType());
-                    data = gson.fromJson(json1,
-                            new TypeToken<ArrayList<Item>>(){}.getType());
+                    Toast.makeText(addinfo.this,"账号不能为空",Toast.LENGTH_SHORT).show();
                 }
+                else if(Pass.equals(""))
+                {
+                    Toast.makeText(addinfo.this,"密码不能为空",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    int Year = c.get(Calendar.YEAR);
+                    int Month = c.get(Calendar.MONTH)+1;
+                    int Day = c.get(Calendar.DAY_OF_MONTH);
+                    int Hour = c.get(Calendar.HOUR_OF_DAY);
+                    int Minute = c.get(Calendar.MINUTE);
+
+                    String Time = Year+"年"+Month+"月"+Day+"日"+"  "+Hour+":"+Minute;
+
+                    if(Note.equals("")){
+                        Note = "无";
+                    }
+
+
+                    //将infodata 从sp中取出并判断是否为空
+                    Gson gson = new Gson();
+
+                    String json = pref.getString("infodata",null);
+                    String json1 = pref.getString("data",null);
+
+                    List<Item> data ;
+                    List<InfoItem> infodata;
+                    if(json == null)
+                    {
+                        infodata = new ArrayList<>();
+                        data = new ArrayList<>();
+                    }
+                    else
+                    {
+                        infodata = gson.fromJson(json,
+                                new TypeToken<ArrayList<InfoItem>>(){}.getType());
+                        data = gson.fromJson(json1,
+                                new TypeToken<ArrayList<Item>>(){}.getType());
+                    }
 
 
 
-                Item item = new Item(Name,Account,Pass);
-                InfoItem infoItem = new InfoItem(Name,Account,Pass,Time,Note);
+                    Item item = new Item(Name,Account,Pass);
+                    InfoItem infoItem = new InfoItem(Name,Account,Pass,Time,Note);
 
-                //把新输入的数据添加到infodata  然后序列化存入sp
-                infodata.add(infoItem);
-                data.add(item);
+                    //把新输入的数据添加到infodata  然后序列化存入sp
+                    infodata.add(infoItem);
+                    data.add(item);
 
-                String json2 = gson.toJson(infodata);
-                String json3 = gson.toJson(data);
-                editor.putString("infodata",json2);
-                editor.putString("data",json3);
+                    String json2 = gson.toJson(infodata);
+                    String json3 = gson.toJson(data);
+                    editor.putString("infodata",json2);
+                    editor.putString("data",json3);
 
-                editor.commit();
-//                System.out.println(pref.getString(Name,""));
-//                System.out.println(pref.getString(Name+"Account",""));
-//                System.out.println(pref.getString(Name+"Pass",""));
-//                System.out.println(pref.getString(Name+"Note",""));
-//                System.out.println(pref.getLong(Name+"Time",0));
+                    editor.commit();
 
-                setResult(RESULT_CANCELED);
-                finish();
+                    setResult(RESULT_CANCELED);
+                    finish();
+                }
             }
         });
 
